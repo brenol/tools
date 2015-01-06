@@ -1,0 +1,70 @@
+" *****************************************************************************
+"  BUNDLES
+" *****************************************************************************
+" vim: ft=vim
+
+if has('vim_starting')
+	set nocompatible  " Be iMproved
+	filetype off  	  " required
+
+	" Required:
+	set runtimepath+=~/.vim/bundle/Vundle.vim/
+endif
+
+
+call vundle#begin('~/.vim/bundle')
+
+    " let Vundle manage Vundle, required
+    Plugin 'gmarik/Vundle.vim'
+
+    "" YouCompleteMe
+    Plugin 'Valloric/YouCompleteMe'
+
+    "" General
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'jistr/vim-nerdtree-tabs'
+    Plugin 'tpope/vim-commentary'
+    Plugin 'tpope/vim-fugitive'
+    Plugin 'kien/ctrlp.vim'
+    Plugin 'bling/vim-airline'
+    Plugin 'airblade/vim-gitgutter'
+    Plugin 'sheerun/vim-polyglot'
+    Plugin 'vim-scripts/grep.vim'
+    Plugin 'vim-scripts/CSApprox'
+    Plugin 'majutsushi/tagbar'
+    Plugin 'vim-scripts/surround.vim'
+    Plugin 'fatih/vim-go'
+    Plugin 'davidhalter/jedi-vim'
+    Plugin 'scrooloose/syntastic'
+    Plugin 'Yggdroot/indentLine'
+    Plugin 'AndrewRadev/sideways.vim'
+    Plugin 'junegunn/vim-easy-align'
+
+    "" Snippets
+    Plugin 'SirVer/ultisnips'
+    Plugin 'honza/vim-snippets'
+
+    "" Color
+    Plugin 'flazz/vim-colorschemes'
+
+    "" Markup
+    Plugin 'docunext/closetag.vim'
+    Plugin 'hail2u/vim-css3-syntax'
+    Plugin 'gorodinskiy/vim-coloresque'
+    Plugin 'tpope/vim-haml'
+    Plugin 'Valloric/MatchTagAlways'
+    Plugin 'lepture/vim-jinja'
+    Plugin 'othree/html5.vim'
+
+    "" Javascript
+    Plugin 'othree/javascript-libraries-syntax.vim'
+    Plugin 'maksimr/vim-jsbeautify'
+    Plugin 'einars/js-beautify'
+
+    "" Database
+    Plugin 'exu/pgsql.vim'
+call vundle#end()
+
+" Required by VUNDLE:
+filetype plugin indent on
+

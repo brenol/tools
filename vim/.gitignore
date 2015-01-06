@@ -1,0 +1,8 @@
+.deps
+.essential
+.go-tools
+.golang
+.nodejs
+.vimrc
+.vundle
+.ycm
