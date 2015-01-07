@@ -25,7 +25,7 @@ call vundle#begin('~/.vim/bundle')
     Plugin 'tpope/vim-commentary'
     Plugin 'tpope/vim-fugitive'
     Plugin 'kien/ctrlp.vim'
-    Plugin 'bling/vim-airline'
+    Plugin 'itchyny/lightline.vim'
     Plugin 'airblade/vim-gitgutter'
     Plugin 'sheerun/vim-polyglot'
     Plugin 'vim-scripts/grep.vim'

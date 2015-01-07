@@ -108,18 +108,6 @@ let g:jedi#show_call_signatures = "0"
 let g:jedi#completions_command = "<C-Space>"
 
 " -----------------------------------------------------------------------------
-" Plugin: VimAirLine
-" -----------------------------------------------------------------------------
-" let g:airline_theme = 'powerlineish'
-let g:airline_enable_branch = 0
-let g:airline_enable_syntastic = 0
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#virtualenv#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-
-" -----------------------------------------------------------------------------
 " Plugin: javascript-libraries-syntax
 " -----------------------------------------------------------------------------
 let g:javascript_enable_domhtmlcss = 1
@@ -137,3 +125,8 @@ let g:sql_type_default = 'pgsql'
 " Plugin: numbers.vim
 " -----------------------------------------------------------------------------
 let g:numbers_exclude = ['unite', 'tagbar', 'vimshell', 'nerdtree']
+
+" -----------------------------------------------------------------------------
+" Plugin: lightline.vim
+" -----------------------------------------------------------------------------
+set noshowmode
