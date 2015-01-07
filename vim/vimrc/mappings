@@ -4,45 +4,6 @@
 " vim: ft=vim
 
 " --------------------------------------------------------------------------
-" General Mappings
-" --------------------------------------------------------------------------
-"
-" Map leader to ,
-let mapleader=','                   
-
-" Window navigation
-noremap <C-h> :wincmd h<CR>
-noremap <C-j> :wincmd j<CR>
-noremap <C-k> :wincmd k<CR>
-noremap <C-l> :wincmd l<CR>
-
-" Splits
-noremap <Leader>h :<C-u>split<CR>
-noremap <Leader>v :<C-u>vsplit<CR>
-
-" Tabs
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
-nnoremap <silent> <S-t> :tabnew<CR>
-
-" Indent/unindent highlighted block (and maintain highlight)
-vnoremap <Tab>    >gv
-vnoremap <S-Tab>  <gv
-
-" jj to ESC while in insert mode
-imap jj <Esc>
-
-" ; to : while in normal mode
-nnoremap ; :
-
-" Ctrl+P to duplicate visual selection
-vmap <C-p> y'>p
-
-" Trim spaces
-autocmd BufWritePre *.py :%s/\s\+$//e
-autocmd BufWritePre *.js :%s/\s\+$//e
-
-" --------------------------------------------------------------------------
 "  grep.vim
 " --------------------------------------------------------------------------
 nnoremap <silent> <leader>f :Rgrep<CR>

@@ -3,172 +3,18 @@
 " *****************************************************************************
 " vim: ft=vim
 
-" -----------------------------------------------------------------------------
-" Basic Setup
-" -----------------------------------------------------------------------------
-set nowrap
-set autoread
-set hidden                          " Enable hidden buffers
-set backspace=indent,eol,start      " Fix backspace indent
-set wildmenu                  	    " Menu completion in command mode on <Tab>
-set wildmode=full                   " <Tab> cycles between all matching choices
-set shell=/bin/bash                 " Bash is the default shell
-set clipboard=unnamedplus           " make vim use the system clipboard by default
-let loaded_matchparen = 1           " Disable Match Paren
-
-" -----------------------------------------------------------------------------
-" File wildcard expanding
-" -----------------------------------------------------------------------------
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
-
-" -----------------------------------------------------------------------------
-" File Encoding and File Format
-" -----------------------------------------------------------------------------
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8
-set bomb
-set ttyfast
-set binary
-set fileformats=unix,dos,mac
-
-" -----------------------------------------------------------------------------
-" Tabs. May be overriten by autocmd rules
-" -----------------------------------------------------------------------------
-set tabstop=4
-set softtabstop=0
-set shiftwidth=4
-set expandtab
-
-" -----------------------------------------------------------------------------
-" Searching
-" -----------------------------------------------------------------------------
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-
-" -----------------------------------------------------------------------------
-" Directories for swp files
-" -----------------------------------------------------------------------------
-set nobackup
-set noswapfile
 
 " -----------------------------------------------------------------------------
 " Messages, Info, Status
 " -----------------------------------------------------------------------------
-set vb t_vb=        " Disable all bells.  I hate ringing/flashing.
-set confirm         " Y-N-C prompt if closing with unsaved changes.
-set showcmd         " Show incomplete normal mode commands as I type.
-set pumheight=10    " Keep a small completion window
-set laststatus=2
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#statusline()}
 
 
 " -----------------------------------------------------------------------------
 " Visual Settigns
 " -----------------------------------------------------------------------------
-syntax on
-set ruler
-set number
+silent! colorscheme molokai
 
-let no_buffers_menu=1
-highlight BadWhitespace ctermbg=red guibg=red
-silent! colorscheme desert256v2
-
-set mouse=a
-
-set t_Co=256
-set cursorline
-set guioptions=egmrti
-set gfn=Monospace\ 8
-
-if has("gui_running")
-	if has("gui_mac") || has("gui_macvim")
-		set guifont=Menlo:h12
-		set transparency=7
-	endif
-else
-	let g:CSApprox_loaded = 1
-
-	if $COLORTERM == 'gnome-terminal'
-		set term=gnome-256color
-	else
-		if $TERM == 'xterm'
-			set term=xterm-256color
-		endif
-	endif
-endif
-
-if &term =~ '256color'
-	set t_ut=
-endif
-
-" Disable the blinking cursor.
-set gcr=a:blinkon0
-set scrolloff=3
-
-" Use modeline overrides
-set modeline
-set modelines=10
-
-" Window Title
-set title
-set titleold="Terminal"
-set titlestring=%F
-
-" -----------------------------------------------------------------------------
-" General Abbreviations
-" -----------------------------------------------------------------------------
-cnoreabbrev W! w!
-cnoreabbrev Q! q!
-cnoreabbrev Wq wq
-cnoreabbrev Wa wa
-cnoreabbrev wQ wq
-cnoreabbrev WQ wq
-cnoreabbrev W w
-cnoreabbrev Q q
-
-" -----------------------------------------------------------------------------
-" General Functions
-" -----------------------------------------------------------------------------
-if !exists('*s:setupWrapping')
-	function s:setupWrapping()
-		set wrap
-		set wm=2
-		set textwidth=99
-	endfunction
-endif
-
-if !exists('*TrimWhiteSpace')
-	function TrimWhiteSpace()
-		let @*=line(".")
-		%s/\s*$//e
-		''
-	endfunction
-endif
-
-" -----------------------------------------------------------------------------
-" General Autocmd Rules
-" -----------------------------------------------------------------------------
-
-"" The PC is fast enough, do syntax highlight syncing from start
-autocmd BufEnter * :syntax sync fromstart
-
-"" Remember cursor position
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-"" txt
-autocmd BufRead,BufNewFile *.txt call s:setupWrapping()
-
-"" make/cmake
-autocmd FileType make setlocal noexpandtab
-autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
-
-if has("gui_running")
-	autocmd BufWritePre * :call TrimWhiteSpace()
-endif
 
 " -----------------------------------------------------------------------------
 " Plugin: NERDTree
@@ -287,3 +133,7 @@ autocmd BufReadPre *.js let b:javascript_lib_use_requirejs = 1
 " -----------------------------------------------------------------------------
 let g:sql_type_default = 'pgsql'
 
+" -----------------------------------------------------------------------------
+" Plugin: numbers.vim
+" -----------------------------------------------------------------------------
+let g:numbers_exclude = ['unite', 'tagbar', 'vimshell', 'nerdtree']

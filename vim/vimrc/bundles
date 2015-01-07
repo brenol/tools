@@ -4,7 +4,6 @@
 " vim: ft=vim
 
 if has('vim_starting')
-	set nocompatible  " Be iMproved
 	filetype off  	  " required
 
 	" Required:
@@ -39,6 +38,7 @@ call vundle#begin('~/.vim/bundle')
     Plugin 'Yggdroot/indentLine'
     Plugin 'AndrewRadev/sideways.vim'
     Plugin 'junegunn/vim-easy-align'
+    Plugin 'myusuf3/numbers.vim'
 
     "" Snippets
     Plugin 'SirVer/ultisnips'
