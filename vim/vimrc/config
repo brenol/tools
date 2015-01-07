@@ -84,7 +84,7 @@ let g:tagbar_type_go = {
 " -----------------------------------------------------------------------------
 " Plugin: vim-python
 " -----------------------------------------------------------------------------
-autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=99
+autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=99
 			\ formatoptions+=croq softtabstop=4 smartindent
 			\ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 
