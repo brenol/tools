@@ -38,8 +38,8 @@ clean:
 	$(info --- Installing Essential packages and tools)
 
 ifeq ($(OS),linux)
-	@apt-get update -qq
-	@apt-get install -qqy \
+	@sudo apt-get update -qq
+	@sudo apt-get install -qqy \
 		 ca-certificates curl \
 		 bzr git mercurial \
 		 build-essential gcc libc6-dev make cmake python-dev \
@@ -65,8 +65,8 @@ essential: .essential
 	$(info --- Installing NodeJS)
 
 ifeq ($(OS),linux)
-	@curl -sL https://deb.nodesource.com/setup | bash -
-	@apt-get install -qqy nodejs
+	@curl -sL https://deb.nodesource.com/setup | sudo bash -
+	@sudo apt-get install -qqy nodejs
 endif
 
 ifeq ($(OS),darwin)
@@ -88,7 +88,7 @@ GOLANG_URL := https://storage.googleapis.com/golang/$(GOLANG_FILE)
 	$(info --- Installing Go)
 
 ifeq ($(OS),linux)
-	@curl -sSL $(GOLANG_URL) | tar -v -C /usr/local -xz
+	@curl -sSL $(GOLANG_URL) | sudo tar -v -C /usr/local -xz
 endif
 
 ifeq ($(OS),darwin)
@@ -111,14 +111,17 @@ golang: essential .golang
 	     vimrc/bundles \
 	     vimrc/config \
 	     vimrc/mappings \
+	     vimrc/local \
 	     > ~/.vimrc
+	@touch ~/.vimrc.local
 	@touch .vimrc
 
 vimrc: .vimrc
 	$(info ✓ Full vimrc installed)
 
 vimrc-basic:
-	@cat vimrc/basic > ~/.vimrc
+	@cat vimrc/basic vimrc/local > ~/.vimrc
+	@touch ~/.vimrc.local
 	$(info ✓ Basic vimrc installed)
 
 .vundle:
@@ -158,6 +161,5 @@ endif
 
 go-tools: essential ycm golang .go-tools
 	$(info ✓ Go-Tools installed)	
-
 install: essential golang nodejs vimrc vundle ycm go-tools
 	$(info ✓ VIM installed)
