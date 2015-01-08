@@ -130,3 +130,11 @@ let g:numbers_exclude = ['unite', 'tagbar', 'vimshell', 'nerdtree']
 " Plugin: lightline.vim
 " -----------------------------------------------------------------------------
 set noshowmode
+
+
+" -----------------------------------------------------------------------------
+" Plugin: vim-go
+" -----------------------------------------------------------------------------
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
