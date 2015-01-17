@@ -16,8 +16,9 @@ call vundle#begin('~/.vim/bundle')
     " let Vundle manage Vundle, required
     Plugin 'gmarik/Vundle.vim'
 
-    "" YouCompleteMe
+    "" Auto complete
     Plugin 'Valloric/YouCompleteMe'
+    Plugin 'Shougo/neocomplete.vim'
 
     "" General
     Plugin 'scrooloose/nerdtree'
@@ -59,6 +60,7 @@ call vundle#begin('~/.vim/bundle')
     Plugin 'othree/javascript-libraries-syntax.vim'
     Plugin 'maksimr/vim-jsbeautify'
     Plugin 'einars/js-beautify'
+    Plugin 'pangloss/vim-javascript'
 
     "" Database
     Plugin 'exu/pgsql.vim'
