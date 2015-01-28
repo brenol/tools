@@ -19,7 +19,6 @@ call vundle#begin('~/.vim/bundle')
     "" Syntax check, auto complete
     Plugin 'davidhalter/jedi-vim'
     Plugin 'scrooloose/syntastic'
-    Plugin 'Shougo/neocomplete.vim'
     Plugin 'Valloric/YouCompleteMe'
 
     "" General
@@ -30,7 +29,7 @@ call vundle#begin('~/.vim/bundle')
     Plugin 'airblade/vim-gitgutter'
     Plugin 'majutsushi/tagbar'
     Plugin 'editorconfig/editorconfig-vim'
-    Plugin 'fholgado/minibufexpl.vim'           " *** NEW ***
+    Plugin 'tpope/vim-repeat'                   " *** NEW ***
 
     "" Formatting
     Plugin 'junegunn/vim-easy-align'
