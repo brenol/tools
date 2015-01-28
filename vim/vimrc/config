@@ -15,6 +15,12 @@ set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#sta
 " -----------------------------------------------------------------------------
 silent! colorscheme molokai
 
+" -----------------------------------------------------------------------------
+" vimshell
+" -----------------------------------------------------------------------------
+let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+let g:vimshell_prompt =  '$ '
+
 
 " -----------------------------------------------------------------------------
 " Plugin: NERDTree
@@ -27,16 +33,6 @@ let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 31
 
-" -----------------------------------------------------------------------------
-" Plugin: grep.vim
-" -----------------------------------------------------------------------------
-let Grep_Default_Options = '-IR'
-
-" -----------------------------------------------------------------------------
-" Plugin: vimshell
-" -----------------------------------------------------------------------------
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_prompt =  '$ '
 
 " -----------------------------------------------------------------------------
 " Plugin: ctrlp.vim
@@ -45,6 +41,7 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
 let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
 let g:ctrlp_use_caching = 0
 let g:ctrlp_working_path_mode = '0'
+let g:ctrlp_max_files = 1000
 
 " -----------------------------------------------------------------------------
 " Plugin: syntastic
@@ -101,7 +98,6 @@ let g:ycm_filepath_completion_use_working_dir = 1
 let g:jedi#popup_on_dot = 0
 let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_definitions_command = "<leader>d"
-let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>n"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "0"
@@ -140,7 +136,6 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 
 
-
 " -----------------------------------------------------------------------------
 " Plugin: neocomplete.vim
 " -----------------------------------------------------------------------------
@@ -151,3 +146,21 @@ let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+
+" -----------------------------------------------------------------------------
+" Plugin: vim-easymotion
+" -----------------------------------------------------------------------------
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Bi-directional find motion
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-s2)
+
+" Turn on case sensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)

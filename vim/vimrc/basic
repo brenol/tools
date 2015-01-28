@@ -16,6 +16,9 @@ set wildmode=full                   " <Tab> cycles between all matching choices
 set shell=/bin/bash                 " Bash is the default shell
 set clipboard=unnamed               " TODO: make vim use the system clipboard by default
 let loaded_matchparen = 1           " Disable Match Paren
+set lazyredraw                      " do not redraw while running macros (much faster) (LazyRedraw)
+set matchpairs+=<:>                 " show matching <> (html mainly) as well
+
 
 " -----------------------------------------------------------------------------
 " File wildcard expanding
