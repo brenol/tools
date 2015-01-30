@@ -5,12 +5,6 @@
 
 
 " -----------------------------------------------------------------------------
-" Messages, Info, Status
-" -----------------------------------------------------------------------------
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#statusline()}
-
-
-" -----------------------------------------------------------------------------
 " Visual Settigns
 " -----------------------------------------------------------------------------
 silent! colorscheme molokai
@@ -126,6 +120,16 @@ let g:numbers_exclude = ['unite', 'tagbar', 'vimshell', 'nerdtree']
 " Plugin: lightline.vim
 " -----------------------------------------------------------------------------
 set noshowmode
+
+let g:lightline = {
+      \ 'component_function': {
+      \   'filename': 'CustomFilename'
+      \ }
+      \ }
+
+function! CustomFilename()
+  return ('' != expand('%') ? expand('%') : '[No Name]')
+endfunction
 
 
 " -----------------------------------------------------------------------------
