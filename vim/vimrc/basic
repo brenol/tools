@@ -19,6 +19,12 @@ let loaded_matchparen = 1           " Disable Match Paren
 set lazyredraw                      " do not redraw while running macros (much faster) (LazyRedraw)
 set matchpairs+=<:>                 " show matching <> (html mainly) as well
 
+" The new Vim regex engine is currently slooooow which makes syntax highlighting slow, 
+" which introduces typing latency. Consider removing this in the future when the new 
+" regex engine becomes faster.
+if v:version >= 704
+    set regexpengine=1
+endif
 
 " -----------------------------------------------------------------------------
 " File wildcard expanding
@@ -88,24 +94,24 @@ set guioptions=egmrti
 set gfn=Monospace\ 8
 
 if has("gui_running")
-	if has("gui_mac") || has("gui_macvim")
-		set guifont=Menlo:h12
-		set transparency=7
-	endif
+    if has("gui_mac") || has("gui_macvim")
+        set guifont=Menlo:h12
+        set transparency=7
+    endif
 else
-	let g:CSApprox_loaded = 1
+    let g:CSApprox_loaded = 1
 
-	if $COLORTERM == 'gnome-terminal'
-		set term=gnome-256color
-	else
-		if $TERM == 'xterm'
-			set term=xterm-256color
-		endif
-	endif
+    if $COLORTERM == 'gnome-terminal'
+        set term=gnome-256color
+    else
+        if $TERM == 'xterm'
+            set term=xterm-256color
+        endif
+    endif
 endif
 
 if &term =~ '256color'
-	set t_ut=
+    set t_ut=
 endif
 
 " Disable the blinking cursor.
@@ -137,19 +143,19 @@ cnoreabbrev Q q
 " General Functions
 " -----------------------------------------------------------------------------
 if !exists('*s:setupWrapping')
-	function s:setupWrapping()
-		set wrap
-		set wm=2
-		set textwidth=99
-	endfunction
+    function s:setupWrapping()
+        set wrap
+        set wm=2
+        set textwidth=99
+    endfunction
 endif
 
 if !exists('*TrimWhiteSpace')
-	function TrimWhiteSpace()
-		let @*=line(".")
-		%s/\s*$//e
-		''
-	endfunction
+    function TrimWhiteSpace()
+        let @*=line(".")
+        %s/\s*$//e
+        ''
+    endfunction
 endif
 
 " -----------------------------------------------------------------------------
@@ -170,7 +176,7 @@ autocmd FileType make setlocal noexpandtab
 autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
 
 if has("gui_running")
-	autocmd BufWritePre * :call TrimWhiteSpace()
+    autocmd BufWritePre * :call TrimWhiteSpace()
 endif
 
 " --------------------------------------------------------------------------

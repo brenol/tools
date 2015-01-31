@@ -3,23 +3,28 @@
 " *****************************************************************************
 " vim: ft=vim
 
-
-" -----------------------------------------------------------------------------
-" Messages, Info, Status
-" -----------------------------------------------------------------------------
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#statusline()}
-
-
 " -----------------------------------------------------------------------------
 " Visual Settigns
 " -----------------------------------------------------------------------------
-silent! colorscheme molokai
+set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#statusline()}
+silent! colorscheme badwolf
 
 " -----------------------------------------------------------------------------
 " vimshell
 " -----------------------------------------------------------------------------
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_prompt =  '$ '
+
+" -----------------------------------------------------------------------------
+" General mappings
+" -----------------------------------------------------------------------------
+
+" Search occurences of word under the cursor, displaying the results in the
+" quickfix window
+nnoremap <Leader>g :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
+
+" Indents the code, preserving the cursor position
+nnoremap <Leader>f gg=G``  
 
 
 " -----------------------------------------------------------------------------
@@ -32,7 +37,6 @@ let g:NERDTreeShowBookmarks=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 31
-
 
 " -----------------------------------------------------------------------------
 " Plugin: ctrlp.vim
@@ -96,10 +100,10 @@ let g:ycm_filepath_completion_use_working_dir = 1
 " Plugin: jedi-vim
 " -----------------------------------------------------------------------------
 let g:jedi#popup_on_dot = 0
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_definitions_command = "<leader>d"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#rename_command = "<leader>r"
+let g:jedi#goto_assignments_command = "<Leader>g"
+let g:jedi#goto_definitions_command = "<Leader>d"
+let g:jedi#usages_command = "<Leader>n"
+let g:jedi#rename_command = "<Leader>r"
 let g:jedi#show_call_signatures = "0"
 let g:jedi#completions_command = "<C-Space>"
 
@@ -127,14 +131,12 @@ let g:numbers_exclude = ['unite', 'tagbar', 'vimshell', 'nerdtree']
 " -----------------------------------------------------------------------------
 set noshowmode
 
-
 " -----------------------------------------------------------------------------
 " Plugin: vim-go
 " -----------------------------------------------------------------------------
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
-
 
 " -----------------------------------------------------------------------------
 " Plugin: vim-easymotion
@@ -152,3 +154,27 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
+
+" -----------------------------------------------------------------------------
+" Plugin: Goyo
+" -----------------------------------------------------------------------------
+let g:goyo_width=100
+nnoremap <silent> <Leader>z :Goyo<cr>
+
+function! s:goyo_enter()
+endfunction
+
+function! s:goyo_leave()
+endfunction
+
+autocmd User GoyoEnter nested call <SID>goyo_enter()
+autocmd User GoyoLeave nested call <SID>goyo_leave()
+
+" -----------------------------------------------------------------------------
+" Plugin: vim-multiple-cursors
+" -----------------------------------------------------------------------------
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<C-S-n>'
+let g:multi_cursor_prev_key='<C-S-p>'
+let g:multi_cursor_skip_key='<C-S-x>'
+let g:multi_cursor_quit_key='<Esc>'

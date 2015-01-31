@@ -34,6 +34,10 @@ clean:
 	$(info ✓ Cache is clean)
 
 
+clean-vimrc:
+	@rm .vimrc > /dev/null 2>&1 || true
+
+
 .essential:
 	$(info --- Installing Essential packages and tools)
 
@@ -161,5 +165,12 @@ endif
 
 go-tools: essential ycm golang .go-tools
 	$(info ✓ Go-Tools installed)	
+
+
 install: essential golang nodejs vimrc vundle ycm go-tools
 	$(info ✓ VIM installed)
+
+
+update: clean-vimrc vundle 
+	@vim +'set nomore' +PluginClean +PluginInstall +PluginUpdate +qall
+	$(info ✓ VIM updated)
