@@ -193,8 +193,8 @@ let g:multi_cursor_quit_key='<Esc>'
 " -----------------------------------------------------------------------------
 " Plugin: vim-expand-region
 " -----------------------------------------------------------------------------
-map K <Plug>(expand_region_expand)
-map J <Plug>(expand_region_shrink)
+map > <Plug>(expand_region_expand)
+map < <Plug>(expand_region_shrink)
 
 let g:expand_region_text_objects = {
       \ 'iw'  :0,
