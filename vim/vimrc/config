@@ -16,18 +16,6 @@ let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_prompt =  '$ '
 
 " -----------------------------------------------------------------------------
-" General mappings
-" -----------------------------------------------------------------------------
-
-" Search occurences of word under the cursor, displaying the results in the
-" quickfix window
-nnoremap <Leader>g :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
-
-" Indents the code, preserving the cursor position
-nnoremap <Leader>f gg=G``  
-
-
-" -----------------------------------------------------------------------------
 " Plugin: NERDTree
 " -----------------------------------------------------------------------------
 let g:NERDTreeChDirMode=2
@@ -154,23 +142,13 @@ let g:go_highlight_structs = 1
 " -----------------------------------------------------------------------------
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
-" Bi-directional find motion
-" `s{char}{char}{label}`
-" Need one more keystroke, but on average, it may be more comfortable.
-nmap s <Plug>(easymotion-s2)
-
 " Turn on case sensitive feature
 let g:EasyMotion_smartcase = 1
-
-" JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
 
 " -----------------------------------------------------------------------------
 " Plugin: Goyo
 " -----------------------------------------------------------------------------
 let g:goyo_width=100
-nnoremap <silent> <Leader>z :Goyo<cr>
 
 function! s:goyo_enter()
 endfunction
@@ -185,17 +163,10 @@ autocmd User GoyoLeave nested call <SID>goyo_leave()
 " Plugin: vim-multiple-cursors
 " -----------------------------------------------------------------------------
 let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_next_key='<C-S-n>'
-let g:multi_cursor_prev_key='<C-S-p>'
-let g:multi_cursor_skip_key='<C-S-x>'
-let g:multi_cursor_quit_key='<Esc>'
 
 " -----------------------------------------------------------------------------
 " Plugin: vim-expand-region
 " -----------------------------------------------------------------------------
-map > <Plug>(expand_region_expand)
-map < <Plug>(expand_region_shrink)
-
 let g:expand_region_text_objects = {
       \ 'iw'  :0,
       \ 'iW'  :0,

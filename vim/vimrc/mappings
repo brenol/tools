@@ -3,10 +3,16 @@
 " *****************************************************************************
 " vim: ft=vim
 
-" --------------------------------------------------------------------------
-"  grep.vim
-" --------------------------------------------------------------------------
-nnoremap <silent> <leader>f :Rgrep<CR>
+" -----------------------------------------------------------------------------
+" General mappings
+" -----------------------------------------------------------------------------
+
+" Search occurences of word under the cursor, displaying the results in the
+" quickfix window
+nnoremap <Leader>g :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
+
+" Indents the code, preserving the cursor position
+nnoremap <Leader>f gg=G``  
 
 " --------------------------------------------------------------------------
 "  VimShell
@@ -125,3 +131,34 @@ autocmd FileType javascript     vnoremap <buffer> <c-f> :call RangeJsBeautify()<
 autocmd FileType json           vnoremap <buffer> <c-f> :call RangeJsonBeautify()<cr>
 autocmd FileType html           vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
 autocmd FileType css            vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
+
+" -----------------------------------------------------------------------------
+" Plugin: vim-expand-region
+" -----------------------------------------------------------------------------
+map > <Plug>(expand_region_expand)
+map < <Plug>(expand_region_shrink)
+
+" -----------------------------------------------------------------------------
+" Plugin: vim-easymotion
+" -----------------------------------------------------------------------------
+" Bi-directional find motion
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-s2)
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+" -----------------------------------------------------------------------------
+" Plugin: Goyo
+" -----------------------------------------------------------------------------
+nnoremap <silent> <Leader>z :Goyo<cr>
+
+" -----------------------------------------------------------------------------
+" Plugin: vim-multiple-cursors
+" -----------------------------------------------------------------------------
+let g:multi_cursor_next_key='<C-S-n>'
+let g:multi_cursor_prev_key='<C-S-p>'
+let g:multi_cursor_skip_key='<C-S-x>'
+let g:multi_cursor_quit_key='<Esc>'
