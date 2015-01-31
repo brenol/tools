@@ -14,7 +14,6 @@ set backspace=indent,eol,start      " Fix backspace indent
 set wildmenu                  	    " Menu completion in command mode on <Tab>
 set wildmode=full                   " <Tab> cycles between all matching choices
 set shell=/bin/bash                 " Bash is the default shell
-set clipboard=unnamed               " TODO: make vim use the system clipboard by default
 let loaded_matchparen = 1           " Disable Match Paren
 set lazyredraw                      " do not redraw while running macros (much faster) (LazyRedraw)
 set matchpairs+=<:>                 " show matching <> (html mainly) as well
@@ -24,6 +23,21 @@ set matchpairs+=<:>                 " show matching <> (html mainly) as well
 " regex engine becomes faster.
 if v:version >= 704
     set regexpengine=1
+endif
+
+if has('unnamedplus')
+    " By default, Vim will not use the system clipboard when yanking/pasting to
+    " the default register. This option makes Vim use the system default
+    " clipboard.
+    " Note that on X11, there are _two_ system clipboards: the "standard" one, and
+    " the selection/mouse-middle-click one. Vim sees the standard one as register
+    " '+' (and this option makes Vim use it by default) and the selection one as
+    " '*'.
+    " See :h 'clipboard' for details.
+    set clipboard=unnamedplus,unnamed
+else
+    " Vim now also uses the selection system clipboard for default yank/paste.
+    set clipboard+=unnamed
 endif
 
 " -----------------------------------------------------------------------------

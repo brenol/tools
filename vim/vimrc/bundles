@@ -74,6 +74,7 @@ call vundle#begin('~/.vim/bundle')
     "" Experimental
     Plugin 'junegunn/goyo.vim'              " *** NEW ***
     Plugin 'terryma/vim-multiple-cursors'   " *** NEW ***
+    Plugin 'terryma/vim-expand-region'      " *** NEW ***
 
 call vundle#end()
 
