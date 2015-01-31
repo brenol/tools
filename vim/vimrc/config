@@ -131,6 +131,17 @@ let g:numbers_exclude = ['unite', 'tagbar', 'vimshell', 'nerdtree']
 " -----------------------------------------------------------------------------
 set noshowmode
 
+let g:lightline = {
+      \ 'component_function': {
+      \   'filename': 'CustomFilename'
+      \ }
+      \ }
+
+function! CustomFilename()
+  return ('' != expand('%') ? expand('%') : '[No Name]')
+endfunction
+
+
 " -----------------------------------------------------------------------------
 " Plugin: vim-go
 " -----------------------------------------------------------------------------
