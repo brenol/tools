@@ -1,4 +1,4 @@
-GOLANG_VERSION = 1.4
+GOLANG_VERSION = 1.6
 GO_ROOT = /usr/local/go
 
 VIM_BUNDLES    := ~/.vim/bundle
@@ -140,7 +140,7 @@ vundle: essential vimrc .vundle
 
 .ycm: 
 	$(info --- Installing YouCompleteMe)
-	@cd $(VIM_BUNDLES)/YouCompleteMe && ./install.sh --clang-completer
+	@cd $(VIM_BUNDLES)/YouCompleteMe && ./install.py --clang-completer
 	@touch .ycm
 
 ycm: essential vundle .ycm
@@ -152,14 +152,7 @@ ifeq ($(GOPATH),)
 	$(error ✗ Your GOPATH is not set properly)
 else
 	@rm -rf $(GOPATH)/src/golang.org/x/tools || true
-	@go get -a -u github.com/nsf/gocode
-	@go get -a -u golang.org/x/tools/cmd/goimports
-	@go get -a -u code.google.com/p/rog-go/exp/cmd/godef
-	@go get -a -u golang.org/x/tools/cmd/oracle
-	@go get -a -u golang.org/x/tools/cmd/gorename
-	@go get -a -u github.com/golang/lint/golint
-	@go get -a -u github.com/kisielk/errcheck
-	@go get -a -u github.com/jstemmer/gotags
+	@vim +GoInstallBinaries +qall
 	@touch .go-tools
 endif
 
@@ -171,6 +164,6 @@ install: essential golang nodejs vimrc vundle ycm go-tools
 	$(info ✓ VIM installed)
 
 
-update: clean-vimrc vundle 
+update: clean-vimrc vundle
 	@vim +'set nomore' +PluginClean +PluginInstall +PluginUpdate +qall
 	$(info ✓ VIM updated)
