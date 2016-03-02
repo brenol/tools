@@ -22,11 +22,7 @@ endif
 
 
 
-all: help
-
-
-help:
-	$(info TODO: HELP MESSAGE)
+all: install
 
 
 clean:
